@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>Bookers</title>
+  </head>
+  <body>
+    <div class="col-xs-3">
+     <h2>User info</h2>
+      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+      <table class="table">
+        <tbody>
+          <tr></tr> 
+          <tr>
+            <th>name</th>
+            <th><%= @user.name %></th>
+          </tr>
+          <tr>
+            <th>introduction</th>
+            <th><%= @user.introduction %></th>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <button type="button" class="btn btn-info btn-block"><%=link_to 'edit',edit_user_path(@user) %></button>
+      </div>
+
+      <div class="row">
+        <h2>New book</h2>
+        <%= form_for(@book) do |f| %>
+
+          <h4>Title</h4>
+          <%= f.text_field :title %>
+
+          <h4>Opinion</h4>
+          <%= f.text_area :body %>
+
+          <button type="button" class="btn btn-info btn-block"><%= f.submit 'Create Book' %></button>
+
+        <% end %>
+      </div>
+    </div>
+
+  	<div class="col-xs-9">
+  		<h2>Book detail</h2>
+  		<table class="table table-hover table-inverse">
+  			<tbody>
+  				<tr>
+  					<td><p class="user_name"><%= @user.name %></p></td>
+            <td><p class="book_title"><%= @books.title %></p></td>
+            <td><p class="book_body"><%= @books.body %></p></td>
+            <% if @book.user == current_user.id %>
+              <td><%= link_to "Edit", edit_book_path(book) %></td>
+              <td><%= link_to "Destroy", book_path(book), method: :delete %></td>
+            <% end %>
+  				</tr>
+  			</tbody>
+  		</table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers</title>
+    <meta name="csrf-param" content="authenticity_token">
+  </head>
+
+  <body>
+    <header>
+    </header>
+
+    <div class="body">
+      <div class="container">
+
+        <div class="row">
+          <div class="top-message col-md-offset-3 col-md-6">
+            <h1>welcome to <strong>Bookers</strong>  !!</h1>
+            <p>In <strong>Bookers</strong>, </p>
+            <p>you can share and exchange  your opinions , inpressions , and emotions</p>
+            <p> about various books!</p>
+
+            <div class="btn-wrapper">
+              <div class="row">
+                <button type="button" class="btn btn-info btn-block"><p><%= link_to "Log in", user_session_path %></p></button>
+              </div>
+              <div class="row">
+                <button type="button" class="btn btn-info btn-block"><p><%= link_to "Sign up", new_user_registration_path %></p></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-3 col-xs-offset-9">
+            <p>CopyRight Infratop.inc</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
