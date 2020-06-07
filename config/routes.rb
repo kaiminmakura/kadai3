@@ -6,9 +6,9 @@ Rails.application.routes.draw do
 
 	resources :users, only: [:show, :index, :edit, :update]
 
-	resources :books, only: [:create, :index, :show, :edit, :destroy]
+	resources :books, only: [:create, :index, :show, :edit, :update, :destroy]
 
-	get '/about' => 'top#about', as: 'about'
+	get '/home/about' => 'top#about', as: 'about'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
