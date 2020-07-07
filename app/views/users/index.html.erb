@@ -67,6 +67,9 @@
                   <td>
                     <%= link_to 'Show', user_path(user) %>
                   </td>
+                  <td>
+                    コメント数: <%= user.book_comments.count %>
+                  </td>
                 </tr>
               </tbody>
             <% end %>

@@ -57,13 +57,57 @@
                 </td>
                 <td><p class="book_title"><%= @books.title %></p></td>
                 <td><p class="book_body"><%= @books.body %></p></td>
+
+                <td>
+                  <div id="favorites_buttons_<%= @books.id %>">
+                    <%= render partial: 'favorites/favorite', locals: { book: @books} %>
+                  </div>
+                </td>
+
+                <td>
+                  コメント数: <%= @books.book_comments.count %>
+                </td>
+
                 <% if @books.user == current_user %>
                   <td><%= link_to "Edit", edit_book_path(@books) %></td>
                   <td><%= link_to "Destroy", book_path(@books), method: :delete %></td>
                 <% end %>
+
   				    </tr>
   			    </tbody>
   		    </table>
+
+          <ol>
+            <% @books.book_comments.each do |book_comment| %>
+
+                <div class="comment-body bb">
+
+                  <div class="comment-text">
+                    <div class="comment-entry"><%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: '40x40' %><%= book_comment.comment %></div>
+                  </div>
+                  <div class="comment-author clearfix">
+                      <%= link_to user_path(book_comment.user) do %>
+                        <%= book_comment.user.name %></a>
+                      <% end %>
+                  </div>
+                  <% if book_comment.user == current_user%>
+                    <div>
+                      <%= link_to "削除", book_book_comment_path(book_comment.book, book_comment), method: :delete, class: "btn btn-danger pull-right" %>
+                    </div>
+                  <% end %>
+
+                </div>
+
+            <% end %>
+          </ol>
+
+          <%= form_for [@books, @book_comment] do |f| %>
+
+                <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+
+            <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+          <% end %>
+
         </div>
       </div>
     </div>
