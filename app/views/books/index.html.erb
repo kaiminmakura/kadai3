@@ -17,6 +17,22 @@
                 <th>introduction</th>
                 <th><%= @user.introduction %></th>
               </tr>
+              <tr>
+                <th>フォロー数: </th>
+                <th>
+                  <%= link_to follows_user_path(@user.id) do %> 
+                    <%= @user.followings.count %>
+                  <% end %> 
+                </th>
+              </tr>
+              <tr>
+                <th>フォロワー数: </th>
+                <th>
+                  <%= link_to followers_user_path(@user.id) do %>
+                    <%= @user.followers.count %>
+                  <% end %>
+                </th>
+              </tr>
             </tbody>
           </table>
 
